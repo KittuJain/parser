@@ -75,9 +75,9 @@ var semantics_grammar = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"start":3,"EXPRESSION":4,"S":5,"EOF":6,"SENTENCE":7,"NAME":8,"VERB":9,"OBJECT":10,"DOT":11,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"S",6:"EOF",8:"NAME",9:"VERB",10:"OBJECT",11:"DOT"},
-productions_: [0,[3,3],[4,3],[4,1],[7,6],[7,6]],
+symbols_: {"error":2,"start":3,"EXPRESSION":4,"S":5,"EOF":6,"SENTENCE":7,"NAME":8,"VERB":9,"OBJECT":10,"DOT":11,"ADVERB":12,"VERB_PHRASE":13,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"S",6:"EOF",8:"NAME",9:"VERB",10:"OBJECT",11:"DOT",12:"ADVERB"},
+productions_: [0,[3,3],[4,3],[4,1],[7,6],[7,6],[7,8],[13,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -89,16 +89,19 @@ break;
 case 2:
 this.$ = $$[$0-2].concat($$[$0])
 break;
-case 4:
+case 4: case 5:
 this.$ = [{"name": $$[$0-5], "verb": $$[$0-3], "object": $$[$0-1]}]
 break;
-case 5:
-this.$ = [{"name": $$[$0-5], "verb": $$[$0-3], "object": $$[$0-1], }]
+case 6:
+this.$ = [{"name": $$[$0-7], "adverb": $$[$0-5], "verb": $$[$0-3], "object": $$[$0-1]}]
+break;
+case 7:
+this.$ = {"adverb": $$[$0-2], "main_verb": $$[$0]}
 break;
 }
 },
-table: [{3:1,4:2,7:3,8:$V0},{1:[3]},{5:[1,5]},{5:[2,3]},{5:[1,6]},{6:[1,7],7:8,8:$V0},{9:[1,9]},{1:[2,1]},{5:[2,2]},{5:[1,10]},{8:[1,12],10:[1,11]},{11:[1,13]},{11:[1,14]},{5:[2,4]},{5:[2,5]}],
-defaultActions: {3:[2,3],7:[2,1],8:[2,2],13:[2,4],14:[2,5]},
+table: [{3:1,4:2,7:3,8:$V0},{1:[3]},{5:[1,5]},{5:[2,3]},{5:[1,6]},{6:[1,7],7:8,8:$V0},{9:[1,9],12:[1,10]},{1:[2,1]},{5:[2,2]},{5:[1,11]},{5:[1,12]},{8:[1,14],10:[1,13]},{9:[1,15]},{11:[1,16]},{11:[1,17]},{5:[1,18]},{5:[2,4]},{5:[2,5]},{10:[1,19]},{11:[1,20]},{5:[2,6]}],
+defaultActions: {3:[2,3],7:[2,1],8:[2,2],16:[2,4],17:[2,5],20:[2,6]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -581,20 +584,22 @@ case 0:return 5
 break;
 case 1:return 8
 break;
-case 2:return 9
+case 2:return 12
 break;
-case 3:return 10
+case 3:return 9
 break;
-case 4:return 11
+case 4:return 10
 break;
-case 5:return 'NEW_LINE'
+case 5:return 11
 break;
-case 6:return 6
+case 6:return 'NEW_LINE'
+break;
+case 7:return 6
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:Ram|Sita\b)/,/^(?:likes|hates\b)/,/^(?:tea|coffee|butter|cheese|biscuits\b)/,/^(?:\.)/,/^(?:\\n)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:Ram|Sita\b)/,/^(?:also\b)/,/^(?:likes|hates\b)/,/^(?:tea|coffee|butter|cheese|biscuits\b)/,/^(?:\.)/,/^(?:\\n)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7],"inclusive":true}}
 });
 return lexer;
 })();
