@@ -29,8 +29,14 @@ partitionsOnName.map(function (current) {
     people.set(current[0]["name"], choices);
 });
 
+var formatChoices = function(choices) {
+    if(choices.length <= 2) return choices.join(" and ");
+    return _.head(choices) + ', '+ formatChoices(_.tail(choices));
+};
+
 people.forEach(function (value, key) {
     return Object.keys(value).forEach(function (choice) {
-        console.log(`${key} ${choice} ${value[choice].join(" and ")}`);
+        console.log(`${key} ${choice} ${formatChoices(value[choice])}`);
     });
 });
+
