@@ -1,0 +1,4 @@
+Ram likes tea.
+Ram likes coffee.
+Ram hates butter.
+Ram hates cheese.

@@ -1,0 +1,11 @@
+{
+  "name": "parser",
+  "version": "0.0.1",
+  "author": "Krati Jain",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.2",
+    "jison": "^0.4.17",
+    "lodash": "^4.13.1"
+  }
+}
