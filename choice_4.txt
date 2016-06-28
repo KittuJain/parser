@@ -1,0 +1,5 @@
+Ram likes tea.
+Sita likes Ram.
+Ram also likes coffee.
+Ram hates butter.
+Ram also hates cheese.
